@@ -13,7 +13,15 @@ function App() {
 
   const obtenerHoraActual = () => {
     let today = new Date();
-    let date = today.getDate() + '-' + (today.getMonth() + 1) + '-' + today.getFullYear();
+    let dia = today.getDate();
+    if (dia < 10) {
+      dia = '0'+dia;
+    }
+    let mes = today.getMonth() + 1;
+    if (mes < 10) {
+      mes = '0'+mes;
+    }
+    let date = dia + '-' + mes + '-' + today.getFullYear();
     let time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
     let fecha = date + ' - ' + time;
     return fecha;
