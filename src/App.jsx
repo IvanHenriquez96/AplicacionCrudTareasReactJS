@@ -98,7 +98,7 @@ function App() {
       <div className="row">
 
 
-        <div className="col-4">
+        <div className="col-md-4 mb-5">
           <form onSubmit={modoEdicion ? agregarTareaEditada : agregarTarea}>
             <h3 className="text-center">
               {modoEdicion ? 'Editar tarea' : 'Agregar tarea'}
@@ -124,7 +124,7 @@ function App() {
           </form>
         </div>
 
-        <div className="col-4">
+        <div className="col-md-4 mb-5">
           <div className="list-group">
             <h3 className="text-center">Pendientes</h3>
             {tareas.length === 0 ? (<p className="text-center list-group-item list-group-item-warning">NO HAY TAREAS PENDIENTES!</p>) : (null)}
@@ -154,7 +154,7 @@ function App() {
           </div>
         </div>
 
-        <div className="col-4">
+        <div className="col-md-4 mb-5">
           <h3 className="text-center">Finalizadas</h3>
           {
             tareasFinalizadas.length === 0 ? (
