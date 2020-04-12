@@ -166,7 +166,7 @@ function App() {
                     tareasFinalizadas.map(tarea => (
                       
                       
-                      <div key={tarea.id} className="list-group-item tareaFinalizada">
+                      <div key={tarea.id} className="list-group-item mb-2 tareaFinalizada">
                       <div className="d-flex w-100 justify-content-between">
                         <h5 className="mb-1">{tarea.nombre}</h5>
                         <small>{tarea.fecha}</small>
