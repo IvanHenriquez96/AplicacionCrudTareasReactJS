@@ -138,16 +138,19 @@ function App() {
                   </div>
                   <p className="mb-1">{item.descTarea}</p>
                   <small>Estado: Pendiente</small>
+                  <div className="float-right mt-2">
+                    <button className="btn btn-danger btn-sm "
+                      onClick={e => eliminarTarea(item.id)}
+                    >Eliminar</button>
+                    <button className="btn btn-warning btn-sm  mx-2"
+                      onClick={e => editarTarea(item)}
+                    >Editar</button>
+                    <button className="btn btn-success btn-sm "
+                      onClick={e => finalizarTarea(item.id)}
+                    >Finalizar</button>
+                  </div>
+                 
 
-                  <button className="btn btn-danger btn-sm float-right"
-                    onClick={e => eliminarTarea(item.id)}
-                  >Eliminar</button>
-                  <button className="btn btn-warning btn-sm float-right mx-2"
-                    onClick={e => editarTarea(item)}
-                  >Editar</button>
-                  <button className="btn btn-success btn-sm float-right"
-                    onClick={e => finalizarTarea(item.id)}
-                  >Finalizar</button>
                 </div>
               ))
             }
@@ -173,9 +176,12 @@ function App() {
                       </div>
                       <p className="mb-1">{tarea.descripcion}</p>
                       <small>Estado: Finalizado</small>
-                      <button className="btn btn-primary btn-sm float-right"
-                      onClick={e => quitarTareaFinalizada(tarea.id)}
-                      >Quitar</button>
+                      <div className="float-right mt-2">
+                        <button className="btn btn-primary btn-sm float-right"
+                        onClick={e => quitarTareaFinalizada(tarea.id)}
+                        >Quitar</button>
+                      </div>
+                     
                     </div>
                     ))
                   }
