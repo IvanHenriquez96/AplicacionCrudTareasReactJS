@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import shortid from 'shortid';
+import swal from 'sweetalert';
 
 function App() {
 
@@ -39,16 +40,35 @@ function App() {
       return
     }
 
-
     setTareas([...tareas, { id: shortid.generate(), nombreTarea: nombre, descTarea: descripcion, estado: 0, fecha: obtenerHoraActual() }]);
     setNombre('');
     setDescripcion('');
     setError(null);
+    swal("Listo!", "Tarea agregada!", "success");
+
   }
 
   const eliminarTarea = (id) => {
-    const arrayFiltrado = tareas.filter(tarea => tarea.id !== id);
-    setTareas(arrayFiltrado);
+
+    swal({
+      title: "Estas seguro?",
+      text: "Una vez borrada no podrás recuperarla!",
+      buttons: ["Cancelar", "Eliminar"],
+      icon: "warning",
+      dangerMode: true,
+    })
+    .then((willDelete) => {
+      if (willDelete) {
+        const arrayFiltrado = tareas.filter(tarea => tarea.id !== id);
+        setTareas(arrayFiltrado);
+        swal("Tarea eliminada!", {
+          icon: "success",
+        });
+      }
+    });
+
+
+    
   }
 
   const editarTarea = (tarea) => {
@@ -77,11 +97,12 @@ function App() {
     setId('');
     setModoEdicion(false);
     setError(null);
+    swal("Listo!", "Tarea editada!", "success");
+
   }
 
   const finalizarTarea = (id) => {
     const arrayFiltrado = tareas.filter(tarea => tarea.id !== id);
-
     tareas.map(tarea => {
       if (tarea.id === id) {
         setTareasFinalizadas([...tareasFinalizadas, { id: tarea.id, nombre: tarea.nombreTarea, descripcion: tarea.descTarea, estado: 1, fecha: obtenerHoraActual() }]);
@@ -92,8 +113,24 @@ function App() {
   }
 
   const quitarTareaFinalizada = (id) => {
-    const arrayFiltrado = tareasFinalizadas.filter(tarea => tarea.id !== id);
-    setTareasFinalizadas(arrayFiltrado);
+
+    swal({
+      title: "Estas seguro?",
+      text: "Una vez quitada no podrás recuperarla!",
+      buttons: ["Cancelar", "Quitar"],
+      icon: "warning",
+      dangerMode: true,
+    })
+    .then((willDelete) => {
+      if (willDelete) {
+        const arrayFiltrado = tareasFinalizadas.filter(tarea => tarea.id !== id);
+        setTareasFinalizadas(arrayFiltrado);
+        swal("Tarea quitada!", {
+          icon: "success",
+        });
+      }
+    });
+    
   }
 
 
